@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="app.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+</head>
+
+<body class="body flex flex-col">
+    <div id="greetings"></div>
+    <ul id="studentsList" class="border border-3 border-black w-32 p-2 m-2"></ul>
+    <main></main>
+    <p class="m-2">Entrez deux nombres à additionner:</p>
+    <div class="flex gap-6 m-2 border border-3 border-black p-2 bg-gray-400">
+        <div class="grid grid-cols-3 content-center">
+            <label class="form-label inline-block mb-2 text-gray-700 mt-2" for="number1">Premier nombre</label>
+            <input class="col-span-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                type="number" name="number1" id="number1" />
+        </div>
+        <div class="grid grid-cols-3 content-center">
+            <label class="form-label inline-block mb-2 text-gray-700 mt-2" for="number2">Deuxième nombre</label>
+            <input type="number" name="number2" id="number2" class="col-span-2 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            />
+        </div>
+        <button id="addition" class="m-2 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Additionner</button>
+        <p class="m-2 mt-3">Total: <span id="total"></span></p>
+    </div>
+
+    <div class="grid grid-cols-6 content-center p-2 border border-3 border-black m-2 bg-gray-400">
+        <label class="form-label inline-block mb-2 text-gray-700 mt-2" for="inputCumul">Nombre à ajouter</label>
+        <input type="number" name="inputCumul" id="inputCumul" class="col-span-3 form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        />
+        <button id="cumul" class="m-2 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Cumuler</button>
+        <p class="m-2 mt-3">Total: <span id="totalCumul"></span></p>
+    </div>
+    <div id="damier">
+        <div class="damier container">
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+            <div class="cadriallage"></div>
+        </div>
+        <button class="m-2 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">générer un damier 9 x 9</button>
+    </div>
+</body>
+
+</html>
