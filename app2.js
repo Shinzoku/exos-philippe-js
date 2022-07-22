@@ -63,23 +63,37 @@ var loadStudent = function(event) {
 // affiche les données du fichier json sous forme de card
 function listStudents(json) {
     const div = document.querySelector('div');
-    json.students.map(element => div.innerHTML +=
-        `
-        <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
-            <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Prénom: ${element.firstname}</p>
-            <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Nom: ${element.lastname}</p>
-            <p class="text-gray-900 text-base mb-4">GitHub Id: ${element.githubid}</p>
-            <p class="text-gray-900 text-base mb-4">Genre: ${element.sex}</p>
-        </div>
-        `);
+    json.students.forEach(function(student) {
+        if (student["firstname-latin"] !== undefined) {
+            div.innerHTML +=
+                `
+                <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+                    <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Prénom: ${student["firstname-latin"]}</p>
+                    <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Nom: ${student["lastname-latin"]}</p>
+                    <p class="text-gray-900 text-base mb-4">GitHub Id: ${student.githubid}</p>
+                    <p class="text-gray-900 text-base mb-4">Genre: ${student.sex}</p>
+                </div>
+                `;
+        } else {
+            div.innerHTML +=
+                `
+                <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+                    <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Prénom: ${student.firstname}</p>
+                    <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Nom: ${student.lastname}</p>
+                    <p class="text-gray-900 text-base mb-4">GitHub Id: ${student.githubid}</p>
+                    <p class="text-gray-900 text-base mb-4">Genre: ${student.sex}</p>
+                </div>
+                `;
+        }
+    })
 
-    json.trainers.map(element => div.innerHTML +=
+    json.trainers.map(trainer => div.innerHTML +=
         `
         <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
-            <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Prénom: ${element.firstname}</p>
-            <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Nom: ${element.lastname}</p>
-            <p class="text-gray-900 text-base mb-4">GitHub Id: ${element.githubid}</p>
-            <p class="text-gray-900 text-base mb-4">Genre: ${element.sex}</p>
+            <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Prénom: ${trainer.firstname}</p>
+            <p class="text-gray-900 text-xl leading-tight font-medium mb-2">Nom: ${trainer.lastname}</p>
+            <p class="text-gray-900 text-base mb-4">GitHub Id: ${trainer.githubid}</p>
+            <p class="text-gray-900 text-base mb-4">Genre: ${trainer.sex}</p>
         </div>
         `);
 }
@@ -104,6 +118,7 @@ function changePromotionName(event) {
 function deletePromotionName(event) {
     // on supprime du localStorage l'enregistrement promotionName
     localStorage.removeItem("promotionName");
+    promoName.value = "";
 }
 
 let promoName = document.querySelector('#promotionName');
@@ -112,3 +127,51 @@ let btnDeleteName = document.querySelector('#deleteName');
 
 btnChangeName.addEventListener('click', changePromotionName);
 btnDeleteName.addEventListener('click', deletePromotionName);
+
+// Ici du code qui va s'exercuter à la fin du chargement DOM à cause du defer indiqué dans la balise script
+// on commence par récupérer ce qui est, ou non, sauveguardé
+// on affect ce qu'on a récupéré dans la valeur de l'input #promotionName
+var promotionName = localStorage.getItem("promotionName");
+promoName.value = promoName;
+console.log(promotionName);
+// -----------------------------------------------------------------------------
+
+// Géolocalisation
+
+var output = document.getElementById("out");
+
+function success(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+
+    var iframe = document.createElement("iframe");
+    iframe.src = "https://www.bing.com/maps/embed?h=400&w=500&cp=" + latitude + "~" + longitude + "&lvl=12&typ=d&sty=r&src=SHELL&FORM=MBEDV8";
+
+    output.appendChild(iframe);
+}
+
+function error() {
+    output.innerHTML = "Unable to retrieve your location";
+}
+
+output.innerHTML = "<p>Locating…</p>";
+
+navigator.geolocation.getCurrentPosition(success, error);
+// -----------------------------------------------------------------------------
+
+// Camera
+
+// Prefer camera resolution nearest to 1280x720.
+// var constraints = { audio: true, video: { width: 1280, height: 720 } };
+
+// navigator.mediaDevices.getUserMedia(constraints)
+//     .then(function(mediaStream) {
+//         var video = document.querySelector('video');
+//         video.srcObject = mediaStream;
+//         video.onloadedmetadata = function(e) {
+//             video.play();
+//         };
+//     })
+//     .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for
